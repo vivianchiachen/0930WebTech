@@ -1,0 +1,91 @@
+#myMenu li {
+
+display:inline-block;
+
+margin: 10px;
+
+color: #000;
+
+background:#fff;
+
+background: rgba(255,255,255, 0.5);
+
+-webkit-border-radius: 5px;
+
+ border-radius: 5px;
+
+}
+
+#myMenu li.active{
+
+background:#666;
+
+background: rgba(0,0,0, 0.5);
+
+color: #fff;
+
+}
+
+#myMenu li a{
+
+text-decoration:none;
+
+color: #000;
+
+}
+
+#myMenu li.active a:hover{
+
+color: #000;
+
+}
+
+#myMenu li:hover{
+
+background: rgba(255,255,255, 0.8);
+
+}
+
+#myMenu li a,
+
+#myMenu li.active a{
+
+padding: 9px 18px;
+
+	 
+
+display:block;
+
+}
+
+#myMenu li.active a{
+
+color: #fff;
+
+}
+
+#myMenu{
+
+position:fixed;
+
+top:0;
+
+left:0;
+
+height: 40px;
+
+z-index: 70;
+
+width: 100%;
+
+padding: 0;
+
+margin:0;
+
+}
+
+
+div.section{
+    padding-left: 60px;
+    padding-right: 60px;
+}

@@ -1,0 +1,298 @@
+
+.jumbotron {
+    background-color: #000;
+    background: #000 
+
+url("https://foreignerintw.files.wordpress.com/2015/03/dsc_3676.jpg") center center;
+    color: #fff;
+    padding: 100px 25px;
+     z-index=-1;
+
+ background-attachment: fixed;
+
+ background-position: bottom;
+
+ width: auto;
+
+ height: 450px;
+
+ background-size: 100% auto;
+
+ overflow: hidden;
+
+ color:azure;
+
+ margin-bottom: 0;
+}
+.bg-grey {
+    background-color: #f6f6f6;
+}
+
+
+.container-fluid {
+    padding: 60px 50px;
+}
+.logo {
+     color: #77969A;
+    font-size: 200px;
+}
+@media screen and (max-width: 768px) {
+    .col-sm-4 {
+        text-align: center;
+        margin: 25px 0;
+        
+    }
+}
+
+.logo-small {
+    color: #77969A;
+    font-size: 50px;
+}
+
+}
+
+
+
+.carousel-control.right, .carousel-control.left {
+    background-image: none;
+    color: #77969A;
+}
+
+.carousel-indicators li {
+    border-color: #77969A;
+}
+
+.carousel-indicators li.active {
+    background-color: #77969A;
+}
+
+.item h4 {
+    font-size: 19px;
+    line-height: 1.375em;
+    font-weight: 400;
+    font-style: italic;
+    margin: 70px 0;
+}
+
+.item span {
+    font-style: normal;
+}
+
+.panel {
+    border: 1px solid #77969A; 
+    border-radius:0;
+    transition: box-shadow 0.5s;
+}
+
+.panel:hover {
+    box-shadow: 5px 0px 40px rgba(0,0,0, .2);
+}
+
+.panel-footer .btn:hover {
+    border: 1px solid #77969A;
+    background-color: #fff !important;
+    color: #77969A;
+}
+
+.panel-heading {
+    color: #fff !important;
+    background-color: #77969A !important;
+    padding: 25px;
+    border-bottom: 1px solid transparent;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+
+.panel-footer {
+    background-color: #fff !important;
+}
+
+.panel-footer h3 {
+    font-size: 32px;
+}
+
+.panel-footer h4 {
+    color: #aaa;
+    font-size: 14px;
+}
+
+.panel-footer .btn {
+    margin: 15px 0;
+    background-color: #77969A;
+    color: #fff;
+}
+.navbar {
+    margin-bottom: 0;
+    background-color: #77969A;
+    z-index: 9999;
+    border: 0;
+    font-size: 12px !important;
+    line-height: 1.42857143 !important;
+    letter-spacing: 4px;
+    border-radius: 0;
+}
+
+.navbar li a, .navbar .navbar-brand {
+    color: #fff !important;
+}
+
+.navbar-nav li a:hover, .navbar-nav li.active a {
+    color: #33A6B8 !important;
+    background-color: #fff !important;
+}
+
+.navbar-default .navbar-toggle {
+    border-color: transparent;
+    color: #fff !important;
+}
+footer .glyphicon {
+    font-size: 20px;
+    margin-bottom: 20px;
+    color: #77969A;
+}
+body {
+    font: 400 15px Lato, sans-serif;
+    line-height: 1.8;
+    color: #818181;
+}
+
+.jumbotron {
+    font-family: Montserrat, sans-serif;
+}
+
+.navbar {
+    font-family: Montserrat, sans-serif;
+}
+h2 {
+    font-size: 24px;
+    text-transform: uppercase;
+    color: #303030;
+    font-weight: 600;
+    margin-bottom: 30px;
+}
+
+h4 {
+    font-size: 19px;
+    line-height: 1.375em;
+    color: #303030;
+    font-weight: 400;
+    margin-bottom: 30px;
+}
+
+.slideanim {visibility:hidden;
+margin-left: 0px;
+margin-right: 0px;}
+.slide {
+    /* The name of the animation */
+    animation-name: slide;
+    -webkit-animation-name: slide; 
+    /* The duration of the animation */
+    animation-duration: 1s; 
+    -webkit-animation-duration: 1s;
+    /* Make the element visible */
+    visibility: visible; 
+}
+
+/* Go from 0% to 100% opacity (see-through) and specify the percentage from when to slide in the element along the Y-axis */
+@keyframes slide {
+    0% {
+        opacity: 0;
+        -webkit-transform: translateY(70%);
+    } 
+    100% {
+        opacity: 1;
+        -webkit-transform: translateY(0%);
+    } 
+}
+@-webkit-keyframes slide {
+    0% {
+        opacity: 0;
+        -webkit-transform: translateY(70%);
+    } 
+    100% {
+        opacity: 1;
+        -webkit-transform: translateY(0%);
+    }
+}
+.iframe-container {
+
+ position: relative;
+
+ width: 100%;
+
+ height: 0;
+
+ padding-bottom: 56.25%;
+
+}
+
+.iframe-video {
+
+ position: absolute;
+
+ top: 0;
+
+ left: 0;
+
+ width: 100%;
+
+ height: 100%;
+
+}
+div.img{
+   padding: 5px 5px 20px 5px;
+    border: 1px solid white;
+    width:230px ;
+    text-align: center;
+    height: 200px;
+    margin-left: 50px;
+}
+
+div.img img {
+    display: inline;
+    border: 4px solid white;
+}
+
+div.img:hover{
+    border: 4px solid #78c2c4;
+    font-size: 1.5em;
+    color: #33A6B8;
+     
+}
+
+
+
+ul {
+    text-align: left
+}
+
+ul li:hover{
+background-color: lightgrey;
+}
+
+#preperation{
+background: #000 url("http://times-bignews.com/UploadFiles/201503/20150311171249a.jpg") center top;
+    z-index: -2;
+    background-attachment: fixed;
+    background-position: top;
+    width: 100%;
+    height: 1000px;
+    background-size: cover;
+
+}
+#content{
+    position: relative;
+    box-shadow: 0px 5px 20px black;
+    background-color: #f6f6f6;
+
+    margin-left: -50px;
+    margin-right: -50px;
+   padding-top: 5px;
+    padding-bottom: 0px;
+
+
+
+}
+

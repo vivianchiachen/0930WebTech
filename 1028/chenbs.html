@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="chenbs.css">
+<script src="chenbs.js"></script>
+<script>
+    afterRender: function () {
+
+        //playing the video
+
+        $('video').get(0).play();
+
+    }
+</script>
+</head>
+
+<body>
+    <div id="banner" class="jumbotron">
+        <h1>Vivid Description</h1>
+        <p>About Me</p>
+
+        <body>
+            <nav class="navbar navbar-inverse" data-spy="affix" data-offset-top="69">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <a class="navbar-brand" href="#">WebSiteName</a>
+                    </div>
+                    <div>
+                        <ul class="nav navbar-nav">
+                            <li class="active"><a href="#">Home</a></li>
+                            <li><a href="#About">About</a></li>
+                            <li><a href="#Experience">Experience</a></li>
+                            <li><a href="#Works">Works</a></li>
+                            <li><a href="#Life">Life</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+    </div>
+    <div class="container">
+        <div id="About" class="row">
+            <div class="col-sm-4">
+                <p>Lorem ipsum dolor sit am</p>
+            </div>
+            <div class="col-sm-8">
+            <h3>What is Data Science+ Program?</h3>
+            <p>Lorem ipsum dolor sit am</p>
+        </div>
+    </div>
+    <div id="Experience" class="row">
+        <div class="col-sm-4">
+            <p>Lorem ipsum dolor sit am</p>
+        </div>
+        <div class="col-sm-8">
+            <h3>What is Data Science+ Program?</h3>
+            <p>Lorem ipsum dolor sit am</p>
+        </div>
+    </div>
+    <div id="Works" class="row">
+        <div class="col-sm-4">
+            <p>Lorem ipsum dolor sit am</p>
+        </div>
+        <div class="col-sm-8">
+  <h3>What is Data Science+ Program?</h3>
+<p>Lorem ipsum dolor sit am</p>
+</div>
+</div>
+<div id="Life" class="row">
+    <div class="col-sm-4">
+        <p>Lorem ipsum dolor sit am</p>
+    </div>
+    <div class="col-sm-8">
+        <div class="row text-center">
+            <div class="col-sm-4">
+
+                <p class="text-center"><strong>Vivian Chen</strong></p>
+                <img src="https://www.facebook.com/photo.php?fbid=10205519426570024&l=71707aede1" class="img-circle person" alt="Random Name" width="255" height="255">
+
+            </div>
+
+            <div class="col-sm-4">
+
+                <p class="text-center"><strong>Vivian Chen</strong></p>
+
+                <img src="https://www.facebook.com/photo.php?fbid=10206905913271325&set=a.1595285607025.2083566.1382513403&type=3&theater" class="img-circle person" alt="Random Name" width="255" height="255">
+
+            </div>
+
+            <div class="col-sm-4">
+
+                <p class="text-center"><strong>Vivian Chen</strong></p>
+                <img src="https://www.facebook.com/photo.php?fbid=10204023733098622&set=a.1595285607025.2083566.1382513403&type=3&theater" class="img-circle person" alt="Random Name" width="255" height="255">
+</div>
+
+</div>
+</div>
+</div>
+
+<div class="section" id="section0">
+
+    <video autoplay loop muted controls="false" id="myVideo">
+
+        <source src="assets/Nyan_Cat.mp4" type="video/mp4">
+
+    </video>
+
+    <div class="layer">
+        <h1>Happy News</h1>
+
+    </div>
+    <div class="iframe-container">
+
+        <div class="iframe-container">
+
+            <iframe src="https://docs.google.com/spreadsheets/d/1B3RAkfJEteWVn2I8gf2ugX79YJtKBUMmgXigNp-W11c/pubhtml?gid=0&amp;single=true&amp;widget=true&amp;headers=false" frameborder="0" class="iframe-video">
+
+            </iframe>
+
+        </div>
+</div>
+</div>
+</div>
+
+<div id="ajaxtest">
+    <h2>Let AJAX change this text</h2></div>
+
+<button type="button" class="btn btn-success btn-md" onclick="loadDoc()">Change Content</button>
+
+<script>
+    function loadDoc() {
+        var x = new XMLHttpRequest();
+        x.onreadystatechange = function () {
+            if (x.readyState == 4 && x.status == 200) {
+                document.getElementById("ajaxtest").innerHTML = x.responseText;
+            }
+        };
+        x.open("GET", "../assets/uv.json", true);
+        x.send();
+    }
+  </script>
+        
+        
+<h1>Iterate dict in json - Youbike DATA</h1>
+
+<div id="youbike-data"></div>
+
+<script>
+    var xhttp_ubike = new XMLHttpRequest();
+
+    xhttp_ubike.onreadystatechange = function () {
+
+        if (xhttp_ubike.readyState == 4 && xhttp_ubike.status == 200) {
+
+            printYoubikeTable(xhttp_ubike.responseText);
+
+        }
+
+    }
+
+    xhttp_ubike.open("GET", "../assets/youbike.json", true);
+
+    xhttp_ubike.send();
+
+    function printYoubikeTable(response) {
+
+        var obj = JSON.parse(response);
+
+        var arr = obj.retVal;
+
+        var out = "<table id = 'youbiketable1' class='table tablesorter table-condensed table-hover table-
+
+        bordered '><thead><tr><th>sitename</th><th>sarea</th><th>total</th><th>Remain</th></tr></thead><tbody
+
+        > ";
+
+        for (var key in arr) {
+
+            out += "<tr><td>" + arr[key].sarea + "</td><td>" + arr[key].sna + "</td><td>" + arr[key].tot +
+
+                "</td><td>" + arr[key].sbi + "</td></tr>";
+
+        }
+
+        out += "</tbody></table>"
+
+        document.getElementById("youbike-data").innerHTML = out;
+
+    }
+</script>
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Data to table</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/jquery.dataTables.min.css">
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="js/jquery.dataTables.min.js"></script>
+
+    <link rel="stylesheet" href="css/myjquery.css">
+    <script src="js/myjquery.js"></script>
+
+</head>
+
+<body data-spy="scroll" data-target="#myScrollspy" data-offset="20">
+
+    <div id='banner' class="jumbotron">
+        <!--
+        <video autoplay loop muted controls="false" id="myVideo">
+            <source src="assets/snoopy.mp4" type="video/mp4">
+        </video>
+-->
+    </div>
+
+    <div class="container-fluid">
+        <div class="row">
+            <nav class="col-sm-3" id="myScrollspy">
+                <ul class="nav nav-pills nav-stacked" data-spy="affix" data-offset-top="405">
+                    <li class="active"><a href="#">Home</a></li>
+                    <li><a href="#myiframe">iframe</a></li>
+                    <li><a href="#sheet">google spreadsheet to json</a></li>
+                    <li><a href="#ajax-sandbox">AJAX Sandbox</a></li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">json to table <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#json-sandbox">JSON Sandbox</a></li>
+                            <li><a href="#json1">JSON: Iterate LIST</a></li>
+                            <li><a href="#json2">JSON: Iterate DICT</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">CSV to table <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#csv1">csv to table I</a></li>
+                            <li><a href="#csv2">csv to table II</a></li>
+                            <li><a href="#csv2">csv to table III: Read CSV by jQuery</a></li>
+                        </ul>
+                    </li>
+
+
+
+                </ul>
+            </nav>
+            <div class="col-sm-9">
+                <div id="myiframe">
+                    <div class="dropdown">
+                        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+                            Download course map
+                            <span class="caret"></span></button>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Word</a></li>
+                            <li><a href="#">PDF</a></li>
+                            <li class="disabled"><a href="#">gdoc</a></li>
+                        </ul>
+                    </div>
+                    <div class="iframe-container">
+                        <iframe frameborder="0" class="iframe-video" src="https://docs.google.com/spreadsheets/d/16JaAPTysBu7RByMYrPBNpfKbO2oBghBh7viMGUtqj8s/pubhtml?gid=0&amp;single=true&amp;widget=true&amp;headers=false"></iframe>
+                    </div>
+                    <div class="iframe-container">
+                        <iframe width="600" height="371" seamless frameborder="0" scrolling="no" src="https://docs.google.com/spreadsheets/d/16JaAPTysBu7RByMYrPBNpfKbO2oBghBh7viMGUtqj8s/pubchart?oid=754366124&amp;format=interactive"></iframe>
+                    </div>
+                </div>
+                <div id="sheet">
+                    <h3>google spreadsheet to json</h3>
+                    <script src="js/sheetrock.min.js"></script>
+                    <table id="my-table" class='table table-condensed table-hover table-bordered table-striped'></table>
+
+                    <script>
+                        var mygoogleSpreadsheet = "https://docs.google.com/spreadsheets/d/16JaAPTysBu7RByMYrPBNpfKbO2oBghBh7viMGUtqj8s/pubhtml?gid=0&amp;single=true&amp;widget=true&amp;headers=false"
+                        $("#my-table").sheetrock({
+                            url: mygoogleSpreadsheet,
+                            query: "select A,B,C"
+                                //                        query: "select A,B,C,D,E,L where E = 'Both' order by L desc"
+                        });
+                    </script>
+                </div>
+
+
+
+
+                <!--AJAX SAND BOX-->
+                <div id="ajax-sandbox">
+                    <h1>AJAX Sandbox</h1>
+                    <div id="ajaxtest">Original Content</div>
+                    <button id="btn01" type="button" class="btn btn-success btn-md" onclick="loadDoc()">Change the above content!</button>
+                    <script>
+                        function loadDoc() {
+                            var xhttp = new XMLHttpRequest();
+                            xhttp.onreadystatechange = function() {
+                                if (xhttp.readyState == 4 && xhttp.status == 200) {
+                                    document.getElementById("ajaxtest").innerHTML = xhttp.responseText;
+                                    document.getElementById("btn01").innerHTML = "Above Text has been modified";
+                                }
+                            };
+                            xhttp.open("GET", "assets/toload.txt", true);
+                            xhttp.send();
+                        }
+                    </script>
+                </div>
+                <div id="json-sandbox">
+                    <h1>JSON-testing</h1>
+                    <button id="btn02" type="button" class="btn btn-success btn-md" onclick="loadJSON()">Click to load json data</button>
+                    <div id="jsontest">ORIGINAL TEXT</div>
+                    <script>
+                        function loadJSON() {
+                            var xhttp = new XMLHttpRequest();
+                            xhttp.onreadystatechange = function() {
+                                if (xhttp.readyState == 4 && xhttp.status == 200) {
+                                    printTable(xmlhttp.responseText);
+                                }
+                            };
+                            xhttp.open("GET", "assets/uv.json", true);
+                            xhttp.send();
+                        }
+
+                        function printTable(response) {
+                            var obj = JSON.parse(response);
+                            var out = "<table id = 'uvtable1' class='table tablesorter table-condensed table-hover table-bordered'><thead><tr><th>SiteName</th><th>UVI</th><th>County</th></tr></thead><tbody>";
+
+                            for (var i = 0; i < obj.length / 2; i++) {
+                                out += "<tr><td>" + obj[i].SiteName +
+                                    "</td><td>" + obj[i].UVI +
+                                    "</td><td>" + obj[i].County + "</td></tr>";
+                            }
+                            out += "</tbody></table>"
+                            document.getElementById("jsontest").innerHTML = out;
+                            document.getElementById("btn02").innerHTML = "JSON data loaded Successfully!!";
+                        }
+                    </script>
+                </div>
+
+
+
+
+                <!--ITERATE LIST in JSON-->
+                <div id="json1">
+                    <h1>Iterate list in json - UV DATA</h1>
+                    <div id="uvdata"></div>
+
+                    <script>
+                        var xmlhttp = new XMLHttpRequest();
+                        var url = "assets/uv.json";
+
+                        xmlhttp.onreadystatechange = function() {
+                            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                                myFunction(xmlhttp.responseText);
+                            }
+                        }
+                        xmlhttp.open("GET", url, true);
+                        xmlhttp.send();
+
+                        function myFunction(response) {
+                            var obj = JSON.parse(response);
+                            var arr = obj;
+                            var out = "<table id = 'uvtable1' class='table table-condensed table-hover table-bordered'><thead><tr><th>SiteName</th><th>UVI</th><th>County</th></tr></thead><tbody>";
+
+                            for (var i = 0; i < arr.length; i++) {
+                                out += "<tr><td>" +
+                                    arr[i].SiteName +
+                                    "</td><td>" +
+                                    arr[i].UVI +
+                                    "</td><td>" +
+                                    arr[i].County +
+                                    "</td></tr>";
+                            }
+
+                            out += "</tbody></table>"
+                            document.getElementById("uvdata").innerHTML = out;
+                        }
+                    </script>
+                </div>
+
+
+
+
+
+
+
+
+
+                <div id="json2">
+                    <h1>Iterate dict in json - Youbike DATA</h1>
+                    <div id="youbike-data"></div>
+                    <script>
+                        var xhttp_ubike = new XMLHttpRequest();
+                        xhttp_ubike.onreadystatechange = function() {
+                            if (xhttp_ubike.readyState == 4 && xhttp_ubike.status == 200) {
+                                printYoubikeTable(xhttp_ubike.responseText);
+                            }
+                        }
+                        xhttp_ubike.open("GET", "assets/youbike.json", true);
+                        xhttp_ubike.send();
+
+                        function printYoubikeTable(response) {
+                            var obj = JSON.parse(response);
+
+                            var arr = obj.retVal;
+                            var out = '<table id = "youbiketable1" class="display dataTables"><thead><tr><th>sarea</th><th>sitename</th><th>total</th><th>Remain</th></tr></thead><tbody>';
+                            for (var key in arr) {
+                                out += "<tr><td>" + arr[key].sarea +
+                                    "</td><td>" + arr[key].sna +
+                                    "</td><td>" + arr[key].tot +
+                                    "</td><td>" + arr[key].sbi + "</td></tr>";
+                            }
+                            out += "</tbody></table>"
+                            document.getElementById("youbike-data").innerHTML = out;
+                        }
+                    </script>
+                </div>
+
+
+
+
+
+
+
+                <div id="csv1">
+                    <h1>Convert csv to table (UV by csv)</h1>
+                    <script src="js/jquery.csvToTable.js"></script>
+                    <div id="CSVTable"></div>
+                    <script>
+                        $(function() {
+                            $('#CSVTable').CSVToTable('assets/uv.csv', {
+                                tableClass: "table table-condensed table-hover table-bordered"
+                            });
+                        });
+                    </script>
+                </div>
+
+
+
+
+                <div id="csv2">
+                    <h1>Using DataTable Plug-in?</h1>
+                    <table id="tableContent"></table>
+                </div>
+
+
+                <div id="csv3">
+                    <h1>Read CSV by jQuery</h1>
+                    <div id="csv_table"></div>
+                    <script>
+                        $.get('assets/uv.csv', function(response) {
+                            
+                            var html = '<table class="table table-bordered"><thead><tr>';
+                            var rows = response.split("\n");
+                            var heads = rows[0].split(",");
+                            html += "<th>" + heads[0] + '</th>';
+                            html += "<th>" + heads[1] + '</th>';
+                            html += "<th>" + heads[3] + '</th>';
+                            html += '</tr></thead><tbody>';
+                            for(var r=1; r<rows.length-1; r++){
+                                cells = rows[r].split(",");    
+                                html += "<tr>";
+                                html += "<td>" + cells[0] + "</td>";
+                                html += "<td>" + cells[1] + "</td>";
+                                html += "<td>" + cells[3] + "</td>";
+                                html += "</tr>";
+                            }
+                            
+                            
+//                            rows.forEach(function getvalues(row) {
+//
+//                                    var cells = row.split(",");
+//                                    html += "<tr>";                                    
+//                                    html += "<td>" + cells[0] + "</td>";
+//                                    html += "<td>" + cells[1] + "</td>";
+//                                    html += "<td>" + cells[2] + "</td>";
+//                                    html += "</tr>";
+//                                })
+                            html += "</tbody></table>";
+
+                            // insert into div
+                            $('#csv_table').append(html);
+
+                        });
+                    </script>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

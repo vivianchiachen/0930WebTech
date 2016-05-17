@@ -1,0 +1,140 @@
+  <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Data to table</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/jquery.dataTables.min.css">
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="js/jquery.dataTables.min.js"></script>
+
+    <link rel="stylesheet" href="css/myjquery.css">
+    <script src="js/myjquery.js"></script>
+
+</head>
+  
+  
+  
+  <body>
+  <div id="json-sandbox">
+                    <h1>JSON-testing</h1>
+                    <button id="btn02" type="button" class="btn btn-success btn-md" onclick="loadJSON()">Click to load json data</button>
+                    <div id="jsontest">ORIGINAL TEXT</div>
+                    <script>
+                        function loadJSON() {
+                            var xhttp = new XMLHttpRequest();
+                            xhttp.onreadystatechange = function() {
+                                if (xhttp.readyState == 4 && xhttp.status == 200) {
+                                    printTable(xmlhttp.responseText);
+                                }
+                            };
+                            xhttp.open("GET", "assets/uv.json", true);
+                            xhttp.send();
+                        }
+
+                        function printTable(response) {
+                            var obj = JSON.parse(response);
+                            var out = "<table id = 'uvtable1' class='table tablesorter table-condensed table-hover table-bordered'><thead><tr><th>SiteName</th><th>UVI</th><th>County</th></tr></thead><tbody>";
+
+                            for (var i = 0; i < obj.length / 2; i++) {
+                                out += "<tr><td>" + obj[i].SiteName +
+                                    "</td><td>" + obj[i].UVI +
+                                    "</td><td>" + obj[i].County + "</td></tr>";
+                            }
+                            out += "</tbody></table>"
+                            document.getElementById("jsontest").innerHTML = out;
+                            document.getElementById("btn02").innerHTML = "JSON data loaded Successfully!!";
+                        }
+                    </script>
+                </div>
+      
+      <div id="csv3">
+                    <h1>Read CSV by jQuery</h1>
+                    <div id="csv_table"></div>
+                    <script>
+                        $.get('assets/uv.csv', function(response) {
+                            
+                            var html = '<table class="table table-bordered"><thead><tr>';
+                            var rows = response.split("\n");
+                            var heads = rows[0].split(",");
+                            html += "<th>" + heads[0] + '</th>';
+                            html += "<th>" + heads[1] + '</th>';
+                            html += "<th>" + heads[3] + '</th>';
+                            html += '</tr></thead><tbody>';
+                            for(var r=1; r<rows.length-1; r++){
+                                cells = rows[r].split(",");    
+                                html += "<tr>";
+                                html += "<td>" + cells[0] + "</td>";
+                                html += "<td>" + cells[1] + "</td>";
+                                html += "<td>" + cells[3] + "</td>";
+                                html += "</tr>";
+                            }
+                            
+                            
+//                            rows.forEach(function getvalues(row) {
+//
+//                                    var cells = row.split(",");
+//                                    html += "<tr>";                                    
+//                                    html += "<td>" + cells[0] + "</td>";
+//                                    html += "<td>" + cells[1] + "</td>";
+//                                    html += "<td>" + cells[2] + "</td>";
+//                                    html += "</tr>";
+//                                })
+                            html += "</tbody></table>";
+
+                            // insert into div
+                            $('#csv_table').append(html);
+
+                        });
+                    </script>
+                </div>
+      
+      
+      
+      
+      <div>
+      <h1>1209 CSV Testing</h1>
+          <div id="CSV1209"></div>
+          <script>
+              $.get('assets/uv.csv', function(response){
+              var rows= response.split('\n');
+                  var output='<p>' + response + '</p>';
+                  $('#CSV1209').append(output);
+              
+              
+              
+              
+              });
+              
+              
+              </script>
+          
+          
+          
+          
+          
+      
+      
+      </div>
+      <div>
+  <input type="text" placeholder="Find..." id="search"><br>
+        <label id="filter-count" for="search">HITS: </label>
+
+      </div>
+      
+      
+      
+      
+  </body>              
+                
+                
+                
+                
+                
+                
+</html>

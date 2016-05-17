@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="fullPage/jquery.fullPage.css" />
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+
+    <script type="text/javascript" src="fullPage/vendors/jquery.slimscroll.min.js"></script>
+
+    <script type="text/javascript" src="fullPage/jquery.fullPage.js"></script>
+    <link rel="stylesheet" type="text/css" href="myfullpage.css" />
+
+    <script>
+        $(document).ready(function () {
+            $('#fullpage').fullpage({
+                sectionsColor: ['#eea9a9', '#bc9f77','#eb7a77', '#bf6766', '#86473f'],
+                anchors: ['firstPage', 'secondPage', 'thirdPage', 'fourthPage'],
+                menu:'#myMenu',
+
+
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <ul id="myMenu">
+        <li data-menuanchor="firstPage"><a href="#firstPage">Firstpage</a></li>
+        <li data-menuanchor="secondPage"><a href="#secondPage">Secondpage</a></li>
+        <li data-menuanchor="thirdPage"><a href="#thirdPage">Thirdpage</a></li>
+        <li data-menuanchor="fourthPage"><a href="#fourthPage">Fourthpage</a></li>
+    </ul>
+
+    <div id="fullpage">
+        <div class="section" class="active">Some section</div>
+        <div class="section fp-auto-height"><h1>數位內容學分學程</h1></div>
+        <div class="section">Some section</div>
+        <div class="section">Some section</div>
+        <div class="section">
+            <div class="slide"> Slide 1 </div>
+            <div class="slide"> Slide 2 </div>
+            <div class="slide"> Slide 3 </div>
+            <div class="slide"> Slide 4 </div>
+        </div>
+    </div>
+    
+
+</body>
+
+
+
+</html>
